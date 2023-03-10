@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block head %}
+<!--Importing MathJax-->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='methodology.css') }}">
+
+{% endblock %}
+
+{% block header %}
+
+{% endblock%}
+
+{% block content %}
+<section class="methodology">
+    <div class="container">
+        <div class="header" style="z-index:-1">
+            <h1>Methodology:</h1>
+            <p>This is the page the methodology will be</p>
+            
+            <a type="button" class="btn btn-success" href="#car">Car</a>
+            <a type="button" class="btn btn-success" href="#bus">Bus</a>
+            <a type="button" class="btn btn-success" href="#walk">Walk</a>
+            
+        <div class="transports">
+        <div class="transport" id="car">
+            <h2>Car</h2>    
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Curabitur blandit vehicula turpis in dapibus. 
+                Aliquam erat volutpat. Vestibulum vitae eros eget tortor blandit tincidunt. 
+                Nam condimentum justo non vestibulum tempus. 
+                Duis accumsan sodales nibh, id congue ex mollis ac. 
+                Curabitur quis iaculis neque. Ut orci tortor, scelerisque sed cursus et, 
+                volutpat at est.Donec non mollis purus.
+            </p>
+            <div class="formula">\[ x^2 + y^2 =z^2 \]</div>
+        </div>
+        <div class="transport" id="bus">
+            <h2>Bus</h2>    
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Curabitur blandit vehicula turpis in dapibus. 
+                Aliquam erat volutpat. Vestibulum vitae eros eget tortor blandit tincidunt. 
+                Nam condimentum justo non vestibulum tempus. 
+                Duis accumsan sodales nibh, id congue ex mollis ac. 
+                Curabitur quis iaculis neque. Ut orci tortor, scelerisque sed cursus et, 
+                volutpat at est.Donec non mollis purus.
+            </p>
+            <div class="formula">\[ x^2 + y^2 =z^2 \]</div>
+        </div>
+        <div class="transport" id="walk">
+            <h2>Walk</h2>    
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Curabitur blandit vehicula turpis in dapibus. 
+                Aliquam erat volutpat. Vestibulum vitae eros eget tortor blandit tincidunt. 
+                Nam condimentum justo non vestibulum tempus. 
+                Duis accumsan sodales nibh, id congue ex mollis ac. 
+                Curabitur quis iaculis neque. Ut orci tortor, scelerisque sed cursus et, 
+                volutpat at est.Donec non mollis purus.
+            </p>
+            <div class="formula">\[ x^2 + y^2 =z^2 \]</div>
+        </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

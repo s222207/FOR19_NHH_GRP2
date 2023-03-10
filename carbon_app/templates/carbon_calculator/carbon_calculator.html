@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carbon_calculator.css') }}">
+
+{% endblock %}
+
+{% block header %}
+
+{% endblock%}
+
+{% block content %}
+<section class="carbon_calculator">
+    <div class="container">
+        <h1>Carbon Calculator</h1>
+        <div class="btn-group">
+            <a type="button" class="btn btn-success" href="{{url_for('carbon_calculator.new_entry')}}">New Entry</a>
+            <a type="button" class="btn btn-success" href="{{url_for('carbon_calculator.your_data')}}">Your Data</a>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
