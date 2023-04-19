@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Aktivitetsresultater</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Aktivitet</th>
+        <th>Distanse (km)</th>
+        <th>CO2-utslipp (kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for activity, summary in activities_summary.items() %}
+        <tr>
+          <td>{{ activity }}</td>
+          <td>{{ summary.distance|round(2) }}</td>
+          <td>{{ summary.emissions|round(2) }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
