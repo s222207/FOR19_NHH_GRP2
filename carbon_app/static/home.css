@@ -97,6 +97,37 @@
 .div_btn a:hover{
     background-color: #172e94;
 }
+
+.img_developer{
+    filter: grayscale(100%);
+    max-width: 300px;
+    max-height:300px;
+    width: 100%;
+    height: auto;
+    object-fit:scale-down;
+    z-index: 1;
+    position: relative;
+}
+.img_developer:hover{
+    filter:none;  
+}
+/*
+.img_devloper:hover{
+    animation-name: change_developer;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+@keyframes change_developer{
+    0%  {filter:grayscale(100%); }
+    100%{filter:none; }
+}
+*/
+
+.section_navbar{
+    z-index: 2;   
+}
+
+
 @media(max-width:768px){
     .div_developers .developer{
         width:100%;
