@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <!--Import the Bootstrap CSS file:-->
     <link
@@ -71,6 +71,15 @@
                                     Calculator
                                 </a>
                             </li>
+                            {%if current_user.is_authenticated%}
+                            <li class="last_li">
+                                <a href="{{url_for('users.logout')}}">
+                                    <span class="nav_icon2"><i class="fa-solid fa-circle-user"></i> </span> 
+                                    Logout
+                                </a>
+                            </li>
+                        
+                            {% else %}
                             <li class="last_li">
                                 <a href="{{url_for('users.login')}}">
                                     <span class="nav_icon2"><i class="fa-solid fa-circle-user"></i> </span> 
@@ -83,6 +92,7 @@
                                     Register
                                 </a>
                             </li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div> 
