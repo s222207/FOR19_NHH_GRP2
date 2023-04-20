@@ -126,7 +126,7 @@ img{
         border-bottom: solid 3px #247a36;
     }
     .navbar .last_li,.navbar li{
-        float:none;
+        float:inline-end;
     }
 }
 
