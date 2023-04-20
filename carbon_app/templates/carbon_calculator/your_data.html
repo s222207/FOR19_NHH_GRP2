@@ -9,5 +9,34 @@
 {% endblock%}
 
 {% block content %}
-Your data
+<section class="register">
+    <div class="container">
+<table class="table">
+    <thread class="thead-dark">
+        <tr>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+            <th scope="col">Kilometers</th>
+            <th scope="col">Transport</th>
+            <th scope="col">Type</th>
+            <th scope="col">gCOeq</th>
+            <th scope="col"></th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for entry in entries %}
+            <tr>
+                <th scope="row">{{ current_user.username }}</th>
+                <td>{{ entry.date.strftime("%m-%d-%Y") }}</td>
+                <td class="number">{{ entry.kms }}</td>
+                <td>{{ entry.transport }}</td>
+                <td>{{ entry.fuel }}</td>
+                <td class="number">{{ entry.co2eq }}</td>
+                <td><a href="{{ url_for('carbon_calculator.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    </div>
+</section>
 {% endblock %}
