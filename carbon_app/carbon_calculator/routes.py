@@ -193,11 +193,12 @@ def new_entry_plane():
 @carbon_calculator.route('/carbon_calculator/your_data')
 @login_required
 def your_data():
-    entries = Transport.query.filter_by(author=current_user).\
-    filter(Transport.date>(datetime.now()-timedelta(days=5))).\
-    order_by(Transport.date.desc()).order_by(Transport.transport.asc()).all()
-
-#Emissions by category
+    #Table
+    entries = Transport.query.filter_by(author=current_user). \
+        filter(Transport.date> (datetime.now() - timedelta(days=5))).\
+        order_by(Transport.date.desc()).order_by(Transport.transport.asc()).all()
+    
+    #Emissions by category
     emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
         group_by(Transport.transport).order_by(Transport.transport.asc()).all()
@@ -238,7 +239,7 @@ def your_data():
     else:
         emission_transport[5]
 
-     #Kilometers by category
+    #Kilometers by category
     kms_by_transport = db.session.query(db.func.sum(Transport.kms), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
         group_by(Transport.transport).order_by(Transport.transport.asc()).all()
@@ -295,8 +296,8 @@ def your_data():
         index_walk = second_tuple_elements.index('Walk')
         kms_transport[7]=first_tuple_elements[index_walk]
     else:
-        kms_transport[7]   
-        
+        kms_transport[7]    
+
     #Emissions by date (individual)
     emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
@@ -306,8 +307,8 @@ def your_data():
     for total, date in emissions_by_date:
         dates_label.append(date.strftime("%m-%d-%y"))
         over_time_emissions.append(total)    
-    
-        #Kms by date (individual)
+
+    #Kms by date (individual)
     kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
         group_by(Transport.date).order_by(Transport.date.asc()).all()
@@ -316,7 +317,8 @@ def your_data():
     for total, date in kms_by_date:
         dates_label.append(date.strftime("%m-%d-%y"))
         over_time_kms.append(total)      
-        
+
+
     return render_template('carbon_calculator/your_data.html', title='your_data', entries=entries,
         emissions_by_transport_python_dic=emissions_by_transport,     
         emission_transport_python_list=emission_transport,             
@@ -325,11 +327,13 @@ def your_data():
         over_time_emissions=json.dumps(over_time_emissions),
         over_time_kms=json.dumps(over_time_kms),
         dates_label=json.dumps(dates_label))
-        
-@carbon_calculator.route('/carbon_calculator/delete_emissions/<int:entry_id>')
+
+#Delete emission
+@carbon_app.route('/carbon_calculator/delete_emissions/<int:entry_id>')
 def delete_emission(entry_id):
     entry = Transport.query.get_or_404(int(entry_id))
     db.session.delete(entry)
     db.session.commit()
-    flash("Entry Deleted", "success")
-    return redirect(url_for('carbon_calculator.your_data'))
+    flash("Entry deleted", "success")
+    return redirect(url_for('carbon_app.your_data'))
+    
