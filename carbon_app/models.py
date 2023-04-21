@@ -25,3 +25,5 @@ class Transport(db.Model):
     date = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)
     co2eq = db.Column(db.Float)
     user_id=db.Column(db.Integer, db.ForeignKey('user_table.id'), nullable=False)
+    total = db.Column(db.Float)
+    
