@@ -199,14 +199,6 @@ def your_data():
 
     return render_template('carbon_calculator/your_data.html', title='Your Data', entries=entries)
 
-@carbon_calculator.route('/carbon_calculator/delete_emissions/<int:entry_id>')
-def delete_emission(entry_id):
-    entry = Transport.query.get_or_404(int(entry_id))
-    db.session.delete(entry)
-    db.session.commit()
-    flash("Entry Deleted", "success")
-    return redirect(url_for('carbon_calculator.your_data'))
-
 #Emissions by category
     emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
@@ -336,3 +328,10 @@ def delete_emission(entry_id):
         over_time_kms=json.dumps(over_time_kms),
         dates_label=json.dumps(dates_label))
         
+@carbon_calculator.route('/carbon_calculator/delete_emissions/<int:entry_id>')
+def delete_emission(entry_id):
+    entry = Transport.query.get_or_404(int(entry_id))
+    db.session.delete(entry)
+    db.session.commit()
+    flash("Entry Deleted", "success")
+    return redirect(url_for('carbon_calculator.your_data'))
