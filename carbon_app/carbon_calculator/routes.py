@@ -329,7 +329,7 @@ def your_data():
         dates_label=json.dumps(dates_label))
 
 #Delete emission
-@carbon_app.route('/carbon_calculator/delete_emissions/<int:entry_id>')
+@carbon_calculator.route('/carbon_calculator/delete_emissions/<int:entry_id>')
 def delete_emission(entry_id):
     entry = Transport.query.get_or_404(int(entry_id))
     db.session.delete(entry)
