@@ -197,8 +197,6 @@ def your_data():
     filter(Transport.date>(datetime.now()-timedelta(days=5))).\
     order_by(Transport.date.desc()).order_by(Transport.transport.asc()).all()
 
-    return render_template('carbon_calculator/your_data.html', title='Your Data', entries=entries)
-
 #Emissions by category
     emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
