@@ -113,7 +113,7 @@
                             <td>{{ entry.co2 }}</td>
                             <td>{{ entry.ch4 }}</td>
                             <td>{{ entry.total }}</td>
-                            <td><a href="{{ url_for('carbon_app.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                            <td><a href="{{ url_for('carbon_calculator.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
