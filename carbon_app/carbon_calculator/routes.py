@@ -334,6 +334,6 @@ def delete_emission(entry_id):
     entry = Transport.query.get_or_404(int(entry_id))
     db.session.delete(entry)
     db.session.commit()
-    flash("Entry deleted", "success")
+    flash("Entry Deleted", "success")
     return redirect(url_for('carbon_calculator.your_data'))
     
