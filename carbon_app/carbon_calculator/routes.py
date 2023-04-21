@@ -3,6 +3,7 @@ from carbon_app.models import Transport, db
 from carbon_app.carbon_calculator.form import WalkForm, BikeForm, CarForm, BusForm, MotorcycleForm, MetroForm, TrainForm, TramForm, FerryForm, PlaneForm
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
+import json
 
 carbon_calculator=Blueprint('carbon_calculator',__name__)
 
