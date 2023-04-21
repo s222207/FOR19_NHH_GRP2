@@ -317,7 +317,7 @@ def your_data():
         dates_label.append(date.strftime("%m-%d-%y"))
         over_time_kms.append(total)      
         
-      return render_template('carbon_calculator/your_data.html', title='your_data', entries=entries,
+    return render_template('carbon_calculator/your_data.html', title='your_data', entries=entries,
         emissions_by_transport_python_dic=emissions_by_transport,     
         emission_transport_python_list=emission_transport,             
         emissions_by_transport=json.dumps(emission_transport),
