@@ -335,5 +335,5 @@ def delete_emission(entry_id):
     db.session.delete(entry)
     db.session.commit()
     flash("Entry deleted", "success")
-    return redirect(url_for('carbon_app.your_data'))
+    return redirect(url_for('carbon_calculator.your_data'))
     
