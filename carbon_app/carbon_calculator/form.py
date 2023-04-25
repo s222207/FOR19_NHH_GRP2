@@ -98,8 +98,8 @@ class MetroForm(FlaskForm):
 class FerryForm(FlaskForm):
     fuel = SelectField(
         choices=[
-            ('With_Car', 'With_Car'),
-            ('Without_Car', 'Without_Car')
+            ('With_Car', 'With Car'),
+            ('Without_Car', 'Without Car')
         ],
         validators = [DataRequired()]
     )
