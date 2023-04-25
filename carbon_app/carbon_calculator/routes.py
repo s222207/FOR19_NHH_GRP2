@@ -268,16 +268,16 @@ def your_data():
     kms_by_transport = db.session.query(db.func.sum(Transport.kms), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
         group_by(Transport.transport).order_by(Transport.transport.asc()).all()
-    kms_transport = [0, 0, 0, 0, 0, 0, 0, 0]
+    kms_transport = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     first_tuple_elements = []
     second_tuple_elements = []
     for a_tuple in kms_by_transport:
         first_tuple_elements.append(a_tuple[0])
         second_tuple_elements.append(a_tuple[1])
 
-    if 'Bicycle' in second_tuple_elements:
-        index_bicycle = second_tuple_elements.index('Bicycle')
-        kms_transport[0]=first_tuple_elements[index_bicycle]
+    if 'Walk' in second_tuple_elements:
+        index_walk = second_tuple_elements.index('Walk')
+        kms_transport[0]=first_tuple_elements[index_walk]
     else:
         kms_transport[0] 
 
@@ -299,9 +299,9 @@ def your_data():
     else:
         kms_transport[3]
 
-    if 'Motorbike' in second_tuple_elements:
-        index_motorbike = second_tuple_elements.index('Motorbike')
-        kms_transport[4]=first_tuple_elements[index_motorbike]
+    if 'Motorcycle' in second_tuple_elements:
+        index_motorcycle = second_tuple_elements.index('Motorcycle')
+        kms_transport[4]=first_tuple_elements[index_motorcycle]
     else:
         kms_transport[4]
 
@@ -311,17 +311,23 @@ def your_data():
     else:
         kms_transport[5]
 
-    if 'Scooter' in second_tuple_elements:
-        index_scooter = second_tuple_elements.index('Scooter')
-        kms_transport[6]=first_tuple_elements[index_scooter]
+    if 'Train' in second_tuple_elements:
+        index_train = second_tuple_elements.index('Train')
+        kms_transport[6]=first_tuple_elements[index_train]
     else:
         kms_transport[6]     
 
-    if 'Walk' in second_tuple_elements:
-        index_walk = second_tuple_elements.index('Walk')
-        kms_transport[7]=first_tuple_elements[index_walk]
+    if 'Tram' in second_tuple_elements:
+        index_tram = second_tuple_elements.index('Tramtram')
+        kms_transport[7]=first_tuple_elements[index_tram]
     else:
-        kms_transport[7]    
+        kms_transport[7]   
+
+    if 'Metro' in second_tuple_elements:
+        index_metro = second_tuple_elements.index('Metrometro')
+        kms_transport[8]=first_tuple_elements[index_metro]
+    else:
+        kms_transport[8]
 
     #Emissions by date (individual)
     emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
