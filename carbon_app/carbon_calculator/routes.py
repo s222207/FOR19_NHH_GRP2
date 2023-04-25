@@ -210,12 +210,6 @@ def your_data():
         first_tuple_elements.append(a_tuple[0])
         second_tuple_elements.append(a_tuple[1])
 
-    if 'Walk' in second_tuple_elements:
-            index_bus = second_tuple_elements.index('Walk')
-            emission_transport[0]=first_tuple_elements[index_bus]
-        else:
-            emission_transport[1]
-
     if 'Bus' in second_tuple_elements:
         index_bus = second_tuple_elements.index('Bus')
         emission_transport[1]=first_tuple_elements[index_bus]
@@ -234,8 +228,8 @@ def your_data():
     else:
         emission_transport[3]
 
-    if 'Motorcycle' in second_tuple_elements:
-        index_motorbike = second_tuple_elements.index('Motorcycle')
+    if 'Motorbike' in second_tuple_elements:
+        index_motorbike = second_tuple_elements.index('Motorbike')
         emission_transport[4]=first_tuple_elements[index_motorbike]
     else:
         emission_transport[4]
