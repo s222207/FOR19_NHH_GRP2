@@ -125,7 +125,7 @@
     {% block javascript %}
     <script>
         // Emissions
-        let emission_transport_data = JSON.parse({{ emissions_by_transport | tojson }})    
+        let emission_transport_data = JSON.parse({{ emissions_by_transport_python_dic | tojson }})    
         Chart.scaleService.updateScaleDefaults('linear', {
                 ticks: {
                     min: 0
