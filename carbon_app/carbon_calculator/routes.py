@@ -135,7 +135,7 @@ def new_entry_ferry():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Ferry'
-        totaltotal = float(kms)*co2eqIDX[transport][fuel]
+        total = float(kms)*co2eqIDX[transport][fuel]
         total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
