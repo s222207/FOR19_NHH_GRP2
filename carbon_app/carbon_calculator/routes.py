@@ -41,7 +41,8 @@ def new_entry_bike():
         transport = 'Bike'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -57,7 +58,8 @@ def new_entry_walk():
         transport = 'Walk'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -73,7 +75,8 @@ def new_entry_bus():
         transport = 'Bus'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -106,7 +109,8 @@ def new_entry_motorcycle():
         transport = 'Motorcycle'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -122,7 +126,8 @@ def new_entry_train():
         transport = 'Train'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -138,7 +143,8 @@ def new_entry_ferry():
         transport = 'Ferry'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -154,7 +160,8 @@ def new_entry_tram():
         transport = 'Tram'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -170,7 +177,8 @@ def new_entry_metro():
         transport = 'Metro'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
@@ -186,7 +194,8 @@ def new_entry_plane():
         transport = 'Plane'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
