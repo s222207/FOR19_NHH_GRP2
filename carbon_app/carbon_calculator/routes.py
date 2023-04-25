@@ -39,9 +39,8 @@ def new_entry_bike():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Bike'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -56,9 +55,8 @@ def new_entry_walk():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Walk'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -73,9 +71,8 @@ def new_entry_bus():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Bus'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -90,9 +87,8 @@ def new_entry_car():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Car'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -107,9 +103,8 @@ def new_entry_motorcycle():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Motorcycle'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -124,9 +119,8 @@ def new_entry_train():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Train'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -141,9 +135,8 @@ def new_entry_ferry():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Ferry'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        totaltotal = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -158,9 +151,8 @@ def new_entry_tram():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Tram'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -175,9 +167,8 @@ def new_entry_metro():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Metro'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
@@ -192,9 +183,8 @@ def new_entry_plane():
         kms = form.kms.data
         fuel = form.fuel.data
         transport = 'Plane'
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        total = co2eq
+        total = float(kms)*co2eqIDX[transport][fuel]
+        total = round(total,1)
         emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
