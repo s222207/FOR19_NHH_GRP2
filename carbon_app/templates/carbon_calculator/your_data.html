@@ -110,8 +110,6 @@
                             <td>{{ entry.kms }}</td>
                             <td>{{ entry.transport }}</td>
                             <td>{{ entry.fuel }}</td>
-                            <td>{{ entry.co2 }}</td>
-                            <td>{{ entry.ch4 }}</td>
                             <td>{{ entry.total }}</td>
                             <td><a href="{{ url_for('carbon_calculator.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                         </tr>
