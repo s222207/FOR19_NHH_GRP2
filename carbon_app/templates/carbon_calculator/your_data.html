@@ -96,8 +96,6 @@
                         <th scope="col">Kilometres</th>
                         <th scope="col">Transport</th>
                         <th scope="col">Fuel</th>
-                        <th scope="col">Co2</th>
-                        <th scope="col">Ch4</th>
                         <th scope="col">Total</th>
                         <th scope="col">Delete</th>
                     </tr>
@@ -110,8 +108,6 @@
                             <td>{{ entry.kms }}</td>
                             <td>{{ entry.transport }}</td>
                             <td>{{ entry.fuel }}</td>
-                            <td>{{ entry.co2 }}</td>
-                            <td>{{ entry.ch4 }}</td>
                             <td>{{ entry.total }}</td>
                             <td><a href="{{ url_for('carbon_calculator.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                         </tr>
