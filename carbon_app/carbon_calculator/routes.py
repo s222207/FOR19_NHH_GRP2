@@ -318,7 +318,7 @@ def your_data():
         kms_transport[6]     
 
     if 'Tram' in second_tuple_elements:
-        index_tram = second_tuple_elements.index('Tramtram')
+        index_tram = second_tuple_elements.index('Tram')
         kms_transport[7]=first_tuple_elements[index_tram]
     else:
         kms_transport[7]   
