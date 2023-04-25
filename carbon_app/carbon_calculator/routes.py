@@ -89,7 +89,8 @@ def new_entry_car():
         transport = 'Car'
         co2eq = float(kms)*co2eqIDX[transport][fuel]
         co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        total = co2eq
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
         db.session.add(emissions)
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
