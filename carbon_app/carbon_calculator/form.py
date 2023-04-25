@@ -97,7 +97,10 @@ class MetroForm(FlaskForm):
 
 class FerryForm(FlaskForm):
     fuel = SelectField(
-        choices=[('No choise', 'No choise')],
+        choices=[
+            ('With_Car', 'With Car'),
+            ('Without_Car', 'Without Car')
+        ],
         validators = [DataRequired()]
     )
     kms = FloatField(

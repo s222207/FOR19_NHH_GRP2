@@ -1,15 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-import os
 from flask_login import LoginManager
+import os
 
 application = Flask(__name__)
 
-
-application = Flask(__name__)
-
-### Code GitHub
 application.config['SECRET_KEY'] = os.environ['SECRET_KEY']  
 DBVAR = f"postgresql://{os.environ['RDS_USERNAME']}:{os.environ['RDS_PASSWORD']}@{os.environ['RDS_HOSTNAME']}/{os.environ['RDS_DB_NAME']}"
 application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
