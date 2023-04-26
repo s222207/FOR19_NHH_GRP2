@@ -15,7 +15,7 @@ class WalkForm(FlaskForm):
     
 class BikeForm(FlaskForm):
     fuel = SelectField(
-        choices=[('Electirc', 'Electric'),('No Fuel', 'No Fuel')],
+        choices=[('Electric', 'Electric'),('No Fuel', 'No Fuel')],
         validators = [DataRequired()]
     )
     kms = FloatField(
