@@ -21,7 +21,7 @@ def new_entry():
 #Dictionaries - emission factors:
 co2eqIDX={}
 co2eqIDX['Car'] = {'Diesel':141.8, 'Gas':155.5, 'Electric & Gas':88.4, 'Electric':7.3}
-co2eqIDX['Bike']= {'No Fuel':0, 'Electric':0.2}
+co2eqIDX['Bike']= {'Electric':0.2, 'No Fuel':0}
 co2eqIDX['Walk']= {'No Fuel':0}
 co2eqIDX['Bus'] = {'Diesel':93.8}
 co2eqIDX['Motorcycle']={'Gas':163.5}
