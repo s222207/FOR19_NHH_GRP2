@@ -540,10 +540,7 @@ def your_data():
         emissions_by_transport_python_dic=emissions_by_transport,     
         emission_transport_python_list=emission_transport,             
         emissions_by_transport=json.dumps(emission_transport),
-        kms_by_transport=json.dumps(kms_transport),
-        over_time_emissions=json.dumps(over_time_emissions),
-        over_time_kms=json.dumps(over_time_kms),
-        dates_label=json.dumps(dates_label))
+        )
 #Delete emission
 @carbon_calculator.route('/carbon_calculator/delete_emissions/<int:entry_id>')
 def delete_emission(entry_id):
