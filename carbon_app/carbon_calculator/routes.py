@@ -274,7 +274,7 @@ def your_data():
     kms_by_transport = db.session.query(db.func.sum(Transport.kms), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
         group_by(Transport.transport).order_by(Transport.transport.asc()).all()
-    kms_transport = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    kms_transport = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     first_tuple_elements = []
     second_tuple_elements = []
     for a_tuple in kms_by_transport:
