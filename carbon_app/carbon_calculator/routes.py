@@ -374,9 +374,7 @@ def your_data():
         order_by(Transport.date.desc()).order_by(Transport.transport.asc()).all()
     
 
-    return render_template('carbon_calculator/your_data.html', title='your_data', entries=entries,
-        
-        )
+    return render_template('carbon_calculator/your_data.html', title='your_data', entries=entries)
 #Delete emission
 @carbon_calculator.route('/carbon_calculator/delete_emissions/<int:entry_id>')
 def delete_emission(entry_id):
