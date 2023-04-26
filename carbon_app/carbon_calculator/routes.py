@@ -368,11 +368,7 @@ def new_entry_plane():
 
 @carbon_calculator.route('/carbon_calculator/your_data')
 @login_required
-def your_data():
-    entries = Transport.query.filter_by(author=current_user). \
-        filter(Transport.date> (datetime.now() - timedelta(days=5))).\
-        order_by(Transport.date.desc()).order_by(Transport.transport.asc()).all()
-    
+def your_data():    
     #Emissions by category
     emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
@@ -536,7 +532,7 @@ def your_data():
         over_time_kms.append(total)      
 
 
-    return render_template('carbon_calculator/your_data.html', title='your_data', entries=entries,
+    return render_template('carbon_calculator/your_data.html', title='your_data',
         emissions_by_transport_python_dic=emissions_by_transport,     
         emission_transport_python_list=emission_transport,             
         emissions_by_transport=json.dumps(emission_transport),
