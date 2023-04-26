@@ -203,7 +203,7 @@ def your_data():
     emissions_by_transport = db.session.query(db.func.sum(Transport.total), Transport.transport). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
         group_by(Transport.transport).order_by(Transport.transport.asc()).all()
-    emission_transport = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    emission_transport = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     first_tuple_elements = []
     second_tuple_elements = []
     for a_tuple in emissions_by_transport:
@@ -261,6 +261,12 @@ def your_data():
     if 'Metro' in second_tuple_elements:
         index_metro = second_tuple_elements.index('Metro')
         emission_transport[8]=first_tuple_elements[index_metro]
+    else:
+        emission_transport[8]
+  
+    if 'Bike' in second_tuple_elements:
+        index_bike = second_tuple_elements.index('Bike')
+        emission_transport[8]=first_tuple_elements[index_bike]
     else:
         emission_transport[8]
 
@@ -326,6 +332,12 @@ def your_data():
     if 'Metro' in second_tuple_elements:
         index_metro = second_tuple_elements.index('Metro')
         kms_transport[8]=first_tuple_elements[index_metro]
+    else:
+        kms_transport[8]
+    
+    if 'Bike' in second_tuple_elements:
+        index_bike = second_tuple_elements.index('Bike')
+        kms_transport[8]=first_tuple_elements[index_bike]
     else:
         kms_transport[8]
 
