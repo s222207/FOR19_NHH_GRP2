@@ -266,9 +266,9 @@ def your_data():
   
     if 'Bike' in second_tuple_elements:
         index_bike = second_tuple_elements.index('Bike')
-        emission_transport[8]=first_tuple_elements[index_bike]
+        emission_transport[9]=first_tuple_elements[index_bike]
     else:
-        emission_transport[8]
+        emission_transport[9]
 
     #Kilometers by category
     kms_by_transport = db.session.query(db.func.sum(Transport.kms), Transport.transport). \
@@ -337,9 +337,9 @@ def your_data():
     
     if 'Bike' in second_tuple_elements:
         index_bike = second_tuple_elements.index('Bike')
-        kms_transport[8]=first_tuple_elements[index_bike]
+        kms_transport[9]=first_tuple_elements[index_bike]
     else:
-        kms_transport[8]
+        kms_transport[9]
 
     #Emissions by date (individual)
     emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
