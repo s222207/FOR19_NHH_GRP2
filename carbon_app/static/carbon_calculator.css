@@ -66,10 +66,6 @@
 .number{
     text-align: end;
 }
-.btn-group {
-    display: inline-flex;
-    flex-wrap: wrap;
-}
 .table_bot:nth-child(even) {
     background-color: #f2f2f2;
 }
