@@ -66,11 +66,10 @@
 .number{
     text-align: end;
 }
-<<<<<<< HEAD
 .btn-group {
+    display: inline-flex;
     flex-wrap: wrap;
 }
-=======
 .table_bot:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -78,4 +77,3 @@
     background-color: #71a959;
     color: white;
 }
->>>>>>> 93321f4c2019a9d9055eb995da7af751d75b3dd9
