@@ -65,3 +65,6 @@
 .number{
     text-align: end;
 }
+.btn-group {
+    flex-wrap: wrap;
+}
