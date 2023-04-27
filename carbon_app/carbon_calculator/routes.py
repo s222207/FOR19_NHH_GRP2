@@ -8,6 +8,7 @@ import json
 carbon_calculator=Blueprint('carbon_calculator',__name__)
 
 @carbon_calculator.route('/carbon_calculator')
+@login_required
 def carbon_calculator_func():
         #Table
     entries = Transport.query.filter_by(author=current_user). \
