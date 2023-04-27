@@ -50,7 +50,7 @@
             {% endwith %}         
             <table class="table">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr class="table_top">
                         <th scope="col">User</th>
                         <th scope="col">Date</th>
                         <th scope="col">Kilometres</th>
@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                     {% for entry in entries %}
-                        <tr>
+                        <tr class="table_bot">
                             <th scope="row">{{ current_user.username }}</th>
                             <td>{{ entry.date.strftime("%m-%d-%Y") }}</td>
                             <td>{{ entry.kms }}</td>
