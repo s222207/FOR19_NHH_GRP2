@@ -38,7 +38,7 @@
         <div class="box">
 
         </div>
-        <div class="box" style="overflow-x:auto;">  
+        <div class="box">  
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
@@ -50,26 +50,26 @@
             {% endwith %}         
             <table class="table">
                 <thead class="thead-dark">
-                    <tr class="table_top">
+                    <tr>
                         <th scope="col">User</th>
-                        <th scope="col" style="width:100px;">Date</th>
-                        <th scope="col">kms</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Kilometres</th>
                         <th scope="col">Transport</th>
                         <th scope="col">Fuel</th>
                         <th scope="col">Total</th>
-                        <th scope="col"></th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for entry in entries %}
-                        <tr class="table_bot">
+                        <tr>
                             <th scope="row">{{ current_user.username }}</th>
                             <td>{{ entry.date.strftime("%m-%d-%Y") }}</td>
                             <td>{{ entry.kms }}</td>
                             <td>{{ entry.transport }}</td>
                             <td>{{ entry.fuel }}</td>
                             <td>{{ entry.total }}</td>
-                            <td style="width:60px;"><a href="{{ url_for('carbon_calculator.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                            <td><a href="{{ url_for('carbon_calculator.delete_emission', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
