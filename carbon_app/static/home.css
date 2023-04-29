@@ -107,6 +107,7 @@
     object-fit:scale-down;
     z-index: 1;
     position: relative;
+    text-align: center;
 }
 .img_developer:hover{
     filter:none;  
