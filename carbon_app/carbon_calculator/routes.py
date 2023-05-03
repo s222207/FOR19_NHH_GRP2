@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, redirect, url_for, flash
 from carbon_app.models import Transport, db
-from carbon_app.carbon_calculator.form import RegForm, WalkForm, BikeForm, CarForm, BusForm, MotorcycleForm, MetroForm, TrainForm, TramForm, FerryForm, PlaneForm
+from carbon_app.carbon_calculator.form import WalkForm, BikeForm, CarForm, BusForm, MotorcycleForm, MetroForm, TrainForm, TramForm, FerryForm, PlaneForm
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 import json
@@ -192,24 +192,7 @@ def carbon_calculator_func():
 @login_required
 def new_entry():
     return render_template('carbon_calculator/new_entry.html', title='New Entry', condition = 'T')
-"""
 
-@carbon_calculator.route('/carbon_calculator/new_entry', methods=['GET','POST'])
-@login_required
-def new_entry():
-    form = RegForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = form.transport.data
-        co2eq = float(kms)*co2eqIDX[transport][fuel]
-        co2eq = round(co2eq,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/new_entry.html', title='New Entry', form=form)
-"""
 #New Entries
 
 #Dictionaries - emission factors:
