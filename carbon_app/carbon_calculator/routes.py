@@ -187,11 +187,28 @@ def carbon_calculator_func():
         over_time_emissions=json.dumps(over_time_emissions),
         over_time_kms=json.dumps(over_time_kms),
         dates_label=json.dumps(dates_label))
-
+"""
 @carbon_calculator.route('/carbon_calculator/new_entry', methods=['GET','POST'])
 @login_required
 def new_entry():
     return render_template('carbon_calculator/new_entry.html', title='New Entry', condition = 'T')
+"""
+
+@carbon_calculator.route('/carbon_calculator/new_entry', methods=['GET','POST'])
+@login_required
+def new_entry():
+    form = RegForm()
+    if form.validate_on_submit():
+        kms = form.kms.data
+        fuel = form.fuel.data
+        transport = form.transport.data
+        co2eq = float(kms)*co2eqIDX[transport][fuel]
+        co2eq = round(co2eq,1)
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        db.session.add(emissions)
+        db.session.commit()
+        return redirect(url_for('carbon_calculator.your_data'))
+    return render_template('carbon_calculator/new_entry.html', title='New Entry', form=form)
 
 #New Entries
 
@@ -208,6 +225,7 @@ co2eqIDX['Train']={'Electric':0.4}
 co2eqIDX['Ferry']={'With_Car':1063.9, 'Without_Car':54.1}
 co2eqIDX['Plane']={'Domestic':101}
 
+"""
 @carbon_calculator.route('/carbon_calculator/NE/new_entry_bike.html', methods=['GET','POST'])
 @login_required
 def new_entry_bike():
@@ -367,7 +385,7 @@ def new_entry_plane():
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
     return render_template('carbon_calculator/NE/new_entry_plane.html', title='New Entry', form=form)
-
+"""
 @carbon_calculator.route('/carbon_calculator/your_data')
 @login_required
 def your_data():
