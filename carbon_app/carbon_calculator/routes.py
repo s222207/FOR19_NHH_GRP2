@@ -166,7 +166,7 @@ def carbon_calculator_func():
 
     for i in range(5):
         date = (datetime.now() - timedelta(days=i)).strftime("%m-%d-%y")
-        dates_label.insert(date)
+        dates_label.append(date)
 
         for total, date in emissions_by_date:
             if date.strftime("%m-%d-%y") == date:
