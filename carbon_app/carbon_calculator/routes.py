@@ -182,7 +182,7 @@ def carbon_calculator_func():
                 break
             else:
                 over_time_emissions.append(0)
-"""
+
     #Kms by date (individual)
     kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
         filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
@@ -192,31 +192,7 @@ def carbon_calculator_func():
     for total, date in kms_by_date:
         dates_label.append(date.strftime("%m-%d-%y"))
         over_time_kms.append(total)
-"""
-        """
-        TESTSTART
-        """
-date_range = [(datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d') for i in range(4, -1, -1)]
 
-kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date).\
-    filter(Transport.date >= date_range[0]).\
-    filter_by(author=current_user).\
-    group_by(Transport.date).\
-    order_by(Transport.date.asc()).all()
-
-daily_kms = []
-dates_label = []
-for date in date_range:
-    total = 0
-    for kms, db_date in kms_by_date:
-        if db_date.strftime('%Y-%m-%d') == date:
-            total = kms
-            break
-    daily_kms.append(total)
-    dates_label.append(datetime.strptime(date, '%Y-%m-%d').strftime("%m-%d-%y"))
-        """
-        TESTEND
-        """
 
 
     return render_template('carbon_calculator/carbon_calculator.html', title='carbon calculator', entries=entries,
