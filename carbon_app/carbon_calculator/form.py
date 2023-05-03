@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import FloatField, SubmitField, SelectField
 from wtforms.validators import DataRequired, NumberRange 
-
+"""
 class RegForm(FlaskForm):
     transport = SelectField(
         choices=[
@@ -158,4 +158,4 @@ class PlaneForm(FlaskForm):
         validators = [DataRequired('Error: Input number'), NumberRange(0, 40075, 'Error: Input a positive number')]
     )
     submit = SubmitField('New Entry')
-"""
+
