@@ -158,9 +158,17 @@ def carbon_calculator_func():
         kms_transport[9]
 
     #Emissions by date (individual)
-    emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
-        filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
-        group_by(Transport.date).order_by(Transport.date.asc()).all()
+    emissions_by_date = db.session.query(
+    db.func.sum(Transport.total),
+    db.func.date(Transport.date)
+).filter(
+    Transport.date > (datetime.now() - timedelta(days=5)),
+    Transport.author == current_user
+).group_by(
+    db.func.date(Transport.date)
+).order_by(
+    db.func.date(Transport.date).asc()
+).all()
     over_time_emissions = []
     dates_label = []
     for total, date in emissions_by_date:
