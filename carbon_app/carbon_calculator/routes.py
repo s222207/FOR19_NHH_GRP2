@@ -187,7 +187,7 @@ def carbon_calculator_func():
         over_time_emissions=json.dumps(over_time_emissions),
         over_time_kms=json.dumps(over_time_kms),
         dates_label=json.dumps(dates_label))
-"""
+
 @carbon_calculator.route('/carbon_calculator/new_entry', methods=['GET','POST'])
 @login_required
 def new_entry():
@@ -209,7 +209,7 @@ def new_entry():
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
     return render_template('carbon_calculator/new_entry.html', title='New Entry', form=form)
-
+"""
 #New Entries
 
 #Dictionaries - emission factors:
