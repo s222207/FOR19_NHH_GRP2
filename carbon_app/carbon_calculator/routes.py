@@ -158,25 +158,49 @@ def carbon_calculator_func():
         kms_transport[9]
 
     #Emissions by date (individual)
-    emissions_by_date = db.session.query(db.func.sum(Transport.total), Transport.date). \
-        filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
-        group_by(Transport.date).order_by(Transport.date.asc()).all()
-    over_time_emissions = []
-    dates_label = []
-    for total, date in emissions_by_date:
-        dates_label.append(date.strftime("%m-%d-%y"))
-        over_time_emissions.append(total)    
+            # Create a list of all dates in the past five days
+        over_time_emissions = []
+        dates_label = []
 
-    #Kms by date (individual)
-    kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
-        filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
-        group_by(Transport.date).order_by(Transport.date.asc()).all()
-    over_time_kms = []
-    dates_label = []
-    for total, date in kms_by_date:
-        dates_label.append(date.strftime("%m-%d-%y"))
-        over_time_kms.append(total)      
+        date_range = [(datetime.now() - timedelta(days=i)).date() for i in range(5)]
 
+        # Get emissions data for each day in the past five days
+        emissions_by_date = db.session.query(
+            db.func.sum(Transport.total),
+            db.func.date(Transport.date)
+        ).filter(
+            Transport.date > (datetime.now() - timedelta(days=5)),
+            Transport.author == current_user
+        ).group_by(
+            db.func.date(Transport.date)
+        ).order_by(
+            db.func.date(Transport.date).asc()
+        ).all()
+
+        # Create lists for emissions and dates
+        # Iterate over all dates in the past five days
+        for day in date_range:
+            # Check if there is emissions data for the current date
+            if emissions_by_date and emissions_by_date[0][1] == day:
+                # Append emissions data for the current date
+                over_time_emissions.append(emissions_by_date[0][0])
+                emissions_by_date.pop(0)
+            else:
+                # Append 0 for empty days
+                over_time_emissions.append(0)
+            
+            # Append formatted date label for the current date
+            dates_label.append(day.strftime("%m-%d-%y"))
+
+            #Kms by date (individual)
+        kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
+            filter(Transport.date > (datetime.now() - timedelta(days=5))).filter_by(author=current_user). \
+            group_by(Transport.date).order_by(Transport.date.asc()).all()
+        over_time_kms = []
+        dates_label = []
+        for total, date in kms_by_date:
+            dates_label.append(date.strftime("%m-%d-%y"))
+            over_time_kms.append(total)      
 
     return render_template('carbon_calculator/carbon_calculator.html', title='carbon calculator', entries=entries,
         emissions_by_transport_python_dic=emissions_by_transport,     
