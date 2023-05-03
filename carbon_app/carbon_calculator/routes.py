@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, redirect, url_for, flash
 from carbon_app.models import Transport, db
-from carbon_app.carbon_calculator.form import WalkForm, BikeForm, CarForm, BusForm, MotorcycleForm, MetroForm, TrainForm, TramForm, FerryForm, PlaneForm
+from carbon_app.carbon_calculator.form import RegForm
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 import json
@@ -191,7 +191,18 @@ def carbon_calculator_func():
 @carbon_calculator.route('/carbon_calculator/new_entry', methods=['GET','POST'])
 @login_required
 def new_entry():
-    return render_template('carbon_calculator/new_entry.html', title='New Entry', condition = 'T')
+    form = RegForm()
+    if form.validate_on_submit():
+        kms = form.kms.data
+        fuel = form.fuel.data
+        transport = form.transport.data
+        co2eq = float(kms)*co2eqIDX[transport][fuel]
+        co2eq = round(co2eq,1)
+        emissions = Transport(kms=kms, fuel=fuel, transport=transport,co2eq=co2eq, author=current_user)
+        db.session.add(emissions)
+        db.session.commit()
+        return redirect(url_for('carbon_calculator.your_data'))
+    return render_template('carbon_calculator/new_entry.html', title='New Entry', form=form)
 
 #New Entries
 
@@ -209,165 +220,7 @@ co2eqIDX['Ferry']={'With_Car':1063.9, 'Without_Car':54.1}
 co2eqIDX['Plane']={'Domestic':101}
 
 
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_bike.html', methods=['GET','POST'])
-@login_required
-def new_entry_bike():
-    form = BikeForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Bike'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_bike.html', title='New Entry', form=form)
 
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_walk.html', methods=['GET','POST'])
-@login_required
-def new_entry_walk():
-    form = WalkForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Walk'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_walk.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_bus.html', methods=['GET','POST'])
-@login_required
-def new_entry_bus():
-    form = BusForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Bus'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_bus.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_car.html', methods=['GET','POST'])
-@login_required
-def new_entry_car():
-    form = CarForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Car'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_car.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_motorcycle.html', methods=['GET','POST'])
-@login_required
-def new_entry_motorcycle():
-    form = MotorcycleForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Motorcycle'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_motorcycle.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_train.html', methods=['GET','POST'])
-@login_required
-def new_entry_train():
-    form = TrainForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Train'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_train.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_ferry.html', methods=['GET','POST'])
-@login_required
-def new_entry_ferry():
-    form = FerryForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Ferry'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_ferry.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_tram.html', methods=['GET','POST'])
-@login_required
-def new_entry_tram():
-    form = TramForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Tram'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_tram.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_metro.html', methods=['GET','POST'])
-@login_required
-def new_entry_metro():
-    form = MetroForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Metro'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_metro.html', title='New Entry', form=form)
-
-@carbon_calculator.route('/carbon_calculator/NE/new_entry_plane.html', methods=['GET','POST'])
-@login_required
-def new_entry_plane():
-    form = PlaneForm()
-    if form.validate_on_submit():
-        kms = form.kms.data
-        fuel = form.fuel.data
-        transport = 'Plane'
-        total = float(kms)*co2eqIDX[transport][fuel]
-        total = round(total,1)
-        emissions = Transport(kms=kms, fuel=fuel, transport=transport,total=total, author=current_user, )
-        db.session.add(emissions)
-        db.session.commit()
-        return redirect(url_for('carbon_calculator.your_data'))
-    return render_template('carbon_calculator/NE/new_entry_plane.html', title='New Entry', form=form)
 
 @carbon_calculator.route('/carbon_calculator/your_data')
 @login_required
