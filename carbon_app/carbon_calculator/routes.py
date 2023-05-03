@@ -225,7 +225,7 @@ co2eqIDX['Train']={'Electric':0.4}
 co2eqIDX['Ferry']={'With_Car':1063.9, 'Without_Car':54.1}
 co2eqIDX['Plane']={'Domestic':101}
 
-"""
+
 @carbon_calculator.route('/carbon_calculator/NE/new_entry_bike.html', methods=['GET','POST'])
 @login_required
 def new_entry_bike():
@@ -385,7 +385,7 @@ def new_entry_plane():
         db.session.commit()
         return redirect(url_for('carbon_calculator.your_data'))
     return render_template('carbon_calculator/NE/new_entry_plane.html', title='New Entry', form=form)
-"""
+
 @carbon_calculator.route('/carbon_calculator/your_data')
 @login_required
 def your_data():
