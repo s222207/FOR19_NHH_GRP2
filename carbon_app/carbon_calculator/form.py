@@ -119,4 +119,3 @@ class PlaneForm(FlaskForm):
         validators = [DataRequired('Error: Input number'), NumberRange(0, 40075, 'Error: Input a positive number')]
     )
     submit = SubmitField('New Entry')
-
