@@ -159,9 +159,6 @@ def carbon_calculator_func():
 
     #Emissions by date (individual)
             # Create a list of all dates in the past five days
-        over_time_emissions = []
-        dates_label = []
-
         date_range = [(datetime.now() - timedelta(days=i)).date() for i in range(5)]
 
         # Get emissions data for each day in the past five days
@@ -178,6 +175,9 @@ def carbon_calculator_func():
         ).all()
 
         # Create lists for emissions and dates
+        over_time_emissions = []
+        dates_label = []
+
         # Iterate over all dates in the past five days
         for day in date_range:
             # Check if there is emissions data for the current date
