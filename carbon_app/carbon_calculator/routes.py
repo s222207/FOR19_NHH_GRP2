@@ -170,10 +170,10 @@ def carbon_calculator_func():
 
         for total, date in emissions_by_date:
             if date.strftime("%m-%d-%y") == date:
-                over_time_emissions.insert(total)
+                over_time_emissions.append(total)
                 break
             else:
-                over_time_emissions.insert(0)
+                over_time_emissions.append(0)
 
     #Kms by date (individual)
     kms_by_date = db.session.query(db.func.sum(Transport.kms), Transport.date). \
