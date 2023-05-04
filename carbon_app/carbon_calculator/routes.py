@@ -26,9 +26,9 @@ def carbon_calculator_func():
         first_tuple_elements.append(a_tuple[0])
         second_tuple_elements.append(a_tuple[1])
 
-    if 'Walk' in second_tuple_elements:
-        index_walk = second_tuple_elements.index('Walk')
-        emission_transport[0]=first_tuple_elements[index_walk]
+    if 'Walking' in second_tuple_elements:
+        index_walking = second_tuple_elements.index('Walking')
+        emission_transport[0]=first_tuple_elements[index_walking]
     else:
         emission_transport[0]
 
@@ -97,9 +97,9 @@ def carbon_calculator_func():
         first_tuple_elements.append(a_tuple[0])
         second_tuple_elements.append(a_tuple[1])
 
-    if 'Walk' in second_tuple_elements:
-        index_walk = second_tuple_elements.index('Walk')
-        kms_transport[0]=first_tuple_elements[index_walk]
+    if 'Walking' in second_tuple_elements:
+        index_walking = second_tuple_elements.index('Walking')
+        kms_transport[0]=first_tuple_elements[index_walking]
     else:
         kms_transport[0] 
 
@@ -210,7 +210,7 @@ def new_entry():
 co2eqIDX={}
 co2eqIDX['Car'] = {'Diesel':141.8, 'Gas':155.5, 'Electric & Gas':88.4, 'Electric':7.3}
 co2eqIDX['Bike']= {'Electric':0.2, 'No Fuel':0}
-co2eqIDX['Walk']= {'No Fuel':0}
+co2eqIDX['Walking']= {'No Fuel':0}
 co2eqIDX['Bus'] = {'Diesel':93.8}
 co2eqIDX['Motorcycle']={'Gas':163.5}
 co2eqIDX['Metro']={'Electric':3.9}
