@@ -14,7 +14,7 @@ class RegistrationForm(FlaskForm):
     )
     password = PasswordField(
         'Password',
-        validators = [DataRequired()]
+        validators = [DataRequired(), Length(min=8, max=30)]
     )
     confirm_password = PasswordField(
         'Confirm Password',
